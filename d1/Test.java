@@ -18,7 +18,7 @@ class Test{
         }   
         // Print the linked list    
         // current = deleteFirst(head);
-        current = insertAtPositon(head, 7, 2);
+        current = deleteValue(head, 3);
         while (current != null) {
             System.out.print(current.data + " ");
             current = current.next;
@@ -63,6 +63,32 @@ class Test{
         }   
         newNode.next = temp.next;
         temp.next = newNode;
+        return head;
+    }
+    static Node deleteLast(Node head){
+        Node current = head;
+        if(head == null || head.next == null){
+            return null;
+        }
+        while(current.next.next != null){
+            current = current.next;
+        }
+        current.next = null;
+        return head;
+    } 
+    static Node deleteValue(Node head,int value){
+        if(head == null) return null;
+        if(head.data == value){
+            return head.next;
+        }
+        Node current = head;
+        while(current.next != null){
+            if(current.next.data == value){
+                current.next = current.next.next;
+                return head;
+            }
+            current = current.next;
+        }
         return head;
     }
 }
